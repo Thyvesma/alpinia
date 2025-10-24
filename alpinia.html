@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hôtel Alpinia - 5 Étoiles & Casino au Marin, Martinique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: rgb(232, 220, 202);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgb(232, 220, 202);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #21c2a7;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        .btn-reserve {
+            background: #ffcc00;
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-reserve:hover {
+            background: #e6b800;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background-image: url('alpinia-background.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: rgb(232, 220, 202);
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .btn-primary {
+            background: #ffcc00;
+            color: #000;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            background: #e6b800;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Sections */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #004d40;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        /* Cards */
+        .card {
+            background: rgb(232, 220, 202);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #004d40;
+        }
+
+        .card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .card a {
+            color: #2f2f2f;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .card a:hover {
+            color: #e6b800;
+        }
+
+        /* Hotel Section */
+        .hotel-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hotel-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .feature-tag {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .hotel-image {
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            width: 100%;
+        }
+
+        /* Casino Section */
+        .casino {
+            background: #004d40;
+            color: rgb(232, 220, 202);
+            text-align: center;
+        }
+
+        .casino h2 {
+            color: #ffcc00;
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .casino p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .casino-features {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .casino-feature {
+            background: #b91c1c;
+            color: rgb(232, 220, 202);
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+
+        /* Restaurant Cards */
+        .restaurant-card {
+            text-align: center;
+            border-top: 4px solid #ffcc00;
+        }
+
+        .restaurant-card img {
+            height: 200px;
+        }
+
+        /* Experience Section */
+        .experience-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .experience-image {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #111827;
+            color: rgb(232, 220, 202);
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #ffcc00;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: #E8DCCA;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: #ffcc00;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #6b7280;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .hotel-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .experience-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .casino-features {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            background: white;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem;
+            text-decoration: none;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .mobile-menu a:hover {
+            background: #f5f5f5;
+        }
+
+        .mobile-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-btn {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="logo-alpinia.png" alt="Logo Hôtel L'Alpinia" style="height: 40px;">
+                    <span>Alpinia</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#hotel">L'Hôtel</a></li>
+                    <li><a href="#suites">Hébergement</a></li>
+                    <li><a href="#casino">Casino</a></li>
+                    <li><a href="#gastronomie">Gastronomie</a></li>
+                    <li><a href="#experiences">Expériences</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#reservation" class="btn-reserve">Réserver</a>
+                <button class="mobile-btn">☰</button>
+            </nav>
+            <div class="mobile-menu">
+                <a href="#hotel">L'Hôtel</a>
+                <a href="#suites">Hébergement</a>
+                <a href="#casino">Casino</a>
+                <a href="#gastronomie">Gastronomie</a>
+                <a href="#experiences">Expériences</a>
+                <a href="#contact">Contact</a>
+                <a href="#reservation">Réserver</a>
+                <a href="#activites">Activités</a>
+        </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Hôtel Alpinia</h1>
+            <p>L'écrin 5 étoiles au Marin, Martinique</p>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="section" style="background: rgb(232, 220, 202);">
+        <div class="container">
+            <div style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.8;">
+                    Découvrez un hôtel d'exception où la nature tropicale rencontre le luxe. 
+                    Profitez de notre casino, de notre gastronomie raffinée et de nos activités exclusives.
+                    <p style="font-size: 1.2rem; color: #666; margin-bottom: 2rem; line-height: 1.8;"></p>
+                    Découvrez notre thé à l'Alpinia, une expérience unique dans un cadre naturel.
+                </p>
+                <a href="#suites" class="btn-primary">Découvrir nos suites</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Section -->
+    <section id="hotel" class="section">
+        <div class="container">
+            <h2 class="section-title">L'Art de Vivre Martiniquais</h2>
+            <div class="hotel-content">
+                <div>
+                    <p class="hotel-text">
+                        Niché sur la magnifique côte du Marin, l'Hôtel Alpinia est une ode à la beauté tropicale. 
+                        Notre établissement 5 étoiles fusionne une architecture élégante avec le confort le plus raffiné.
+                    </p>
+                    <p class="hotel-text">
+                        Profitez d'une piscine à débordement donnant sur la mer des Caraïbes, d'un service de conciergerie 
+                        personnalisé et d'un accès privé à une plage de sable blanc immaculée.
+                    </p>
+                    <div class="features">
+                        <span class="feature-tag">Vue Mer Garantie</span>
+                        <span class="feature-tag">Service 5 Étoiles</span>
+                        <span class="feature-tag">Architecture Locale</span>
+                        <span class="feature-tag">Thé à l'Alpinia</span>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Piscine de l'hôtel Alpinia" class="hotel-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Suites Section -->
+    <section id="suites" class="section" style="background: rgb(232, 220, 202);">
+        <div class="container">
+            <h2 class="section-title">Nos Suites et Villas d'Exception</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Suite Alpinia Cœur">
+                    <h3>Suite Alpinia Cœur</h3>
+                    <p>Un espace de 60m² avec terrasse privée et bain à remous face à l'océan.</p>
+                    <a href="#">Voir les détails →</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Villa Anse Noire">
+                    <h3>Villa Anse Noire</h3>
+                    <p>Nos luxueuses villas avec piscine privée, idéales pour les familles ou les groupes.</p>
+                    <a href="#">Voir les détails →</a>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Chambre Premium Lagon">
+                    <h3>Chambre Premium Lagon</h3>
+                    <p>Chambres spacieuses avec accès direct à la piscine lagon de l'hôtel.</p>
+                    <a href="#">Voir les détails →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Casino Section -->
+    <section id="casino" class="section casino">
+        <div class="container">
+            <h2>Le Casino Alpinia</h2>
+            <p>Le seul établissement 5 étoiles de Martinique avec son propre casino de luxe.</p>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">
+                Découvrez l'excitation du jeu dans un cadre sophistiqué et intime, directement au sein de l'Hôtel Alpinia. 
+                Le Casino Alpinia vous propose une sélection de machines à sous de dernière génération, 
+                des tables de Black Jack, de Roulette et de Poker.
+            </p>
+            <div class="casino-features">
+                <span class="casino-feature">Roulette & Black Jack</span>
+                <span class="casino-feature">Machines à Sous</span>
+                <span class="casino-feature">Bar Exclusif</span>
+            </div>
+            <a href="#" class="btn-primary" style="background: rgb(232, 220, 202); color: black;">Planifier votre Soirée</a>
+        </div>
+    </section>
+
+    <!-- Gastronomie Section -->
+    <section id="gastronomie" class="section">
+        <div class="container">
+            <h2 class="section-title">Une Cuisine d'Exception</h2>
+            <div class="grid grid-3">
+                <div class="card restaurant-card">
+                    <h3>Le Colibri</h3>
+                    <p>Cuisine gastronomique française et caribéenne. Expérience en bord de mer.</p>
+                    <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Restaurant Le Colibri">
+                    <a href="#">Découvrir la carte →</a>
+                </div>
+                <div class="card restaurant-card">
+                    <h3>La Case Créole</h3>
+                    <p>Buffet riche en saveurs locales et petit-déjeuner continental.</p>
+                    <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Restaurant La Case Créole">
+                    <a href="#">Réserver une table →</a>
+                </div>
+                <div class="card restaurant-card">
+                    <h3>Le Bar du Rhum</h3>
+                    <p>Dégustation de rhums d'exception et cocktails signatures face au coucher de soleil.</p>
+                    <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Bar du Rhum">
+                    <a href="#">Voir la carte des boissons →</a>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiences Section -->
+    <section id="experiences" class="section" style="background: rgb(232, 220, 202);">
+        <div class="container">
+            <h2 class="section-title">Vos Expériences Inoubliables</h2>
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3>Spa & Bien-être</h3>
+                    <p>Détendez-vous dans notre Spa "Le Ti'Baume". Profitez de soins à base d'huiles essentielles locales, 
+                        de massages en plein air et d'un hammam. Un sanctuaire de sérénité.</p>
+                    <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Spa Le Ti'Baume" class="experience-image">
+                    <a href="#">Voir les soins →</a>
+                </div>
+                <div class="card">
+                    <h3>Activités Nautiques & Terrestres</h3>
+                    <p>De la plongée avec tuba aux excursions en catamaran, en passant par des randonnées guidées 
+                        sur la Montagne Pelée. Notre conciergerie organise votre aventure sur mesure.</p>
+                    <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Activités nautiques" class="experience-image">
+                    <a href="#">Planifier votre séjour →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Alpinia</h3>
+                    <p>Votre escapade 5 étoiles au Marin, Martinique.</p>
+            </div>
+                <div class="footer-section">
+                    <h3>Navigation</h3>
+                    <ul>
+                        <li><a href="#suites">Hébergement</a></li>
+                        <li><a href="#casino">Casino</a></li>
+                        <li><a href="#gastronomie">Gastronomie</a></li>
+                        <li><a href="#experiences">Activités</a></li>
+                </ul>
+            </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Hôtel Alpinia</p>
+                    <p>Anse Marin, 97290 Le Marin, Martinique</p>
+                    <p>Téléphone : +596 696 69 69 69 </p>
+                    <p>Email : contact@alpinia.mq</p>
+                    <p>PDG : Mathyves Meranville & Co. Ltd</p>
+            </div>
+                <div class="footer-section">
+                    <h3>Newsletter</h3>
+                    <p>Inscrivez-vous à notre newsletter pour recevoir les dernières actualités de l'hôtel.</p>
+                <form>
+                        <input type="email" placeholder="Votre email" style="width: 100%; padding: 0.5rem; border-radius: 5px; border: 1px solid #374151; background: #1f2937; color: white; margin-bottom: 0.5rem;">
+                        <button type="submit" style="width: 100%; background: #ffcc00; color: black; padding: 0.5rem; border: none; border-radius: 5px; font-weight: 600;">
+                            S'inscrire
+                    </button>
+                </form>
+            </div>
+        </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Hôtel Alpinia. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation fluide
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Menu mobile
+        const mobileBtn = document.querySelector('.mobile-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        
+        if (mobileBtn && mobileMenu) {
+            mobileBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+</html>
